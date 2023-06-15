@@ -1,0 +1,33 @@
+﻿@model module_21.Models.Subscriber
+@{
+    ViewBag.Title = "Добавление абонента";
+}
+<form asp-action="CreateSubscriber" asp-controller="Home" method="post">
+    <div>
+        <label asp-for="Name" class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Surname" class="control-label">Фамилия</label>
+        <input type="text" asp-for="Surname" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Patronymic" class="control-label">Отчество</label>
+        <input type="text" asp-for="Patronymic" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="PhoneNumber" class="control-label">Номер телефона</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Address" class="control-label">Адрес</label>
+        <input type="text" asp-for="Address" class="form-control" />
+    </div>
+    <div>
+        <label asp-for="Description" class="control-label">Описание</label>
+        <input type="text" asp-for="Description" class="form-control" />
+    </div>
+    <div>
+        <input type="submit" value="Создать абонента" class="btn btn-sm btn-primary" />
+    </div>
+</form>

@@ -1,0 +1,36 @@
+﻿@model module_21.Models.Subscriber
+@{
+    ViewBag.Title = "Удаление абонента";
+}
+<h2>Подтвердить удаление?</h2>
+<div>
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Номер телефона</td>
+            <td>Адрес</td>
+            <td>Описание</td>
+        </tr>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Name</td>
+            <td>@Model.Surname</td>
+            <td>@Model.Patronymic</td>
+            <td>@Model.PhoneNumber</td>
+            <td>@Model.Address</td>
+            <td>@Model.Description</td>
+        </tr>
+        
+    </table>
+
+    <div>
+        <form asp-controller="Home" asp-action="DeleteSubscriber" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-sm btn-primary" value="Удалить" />
+            </div>
+        </form>
+    </div>
+</div>

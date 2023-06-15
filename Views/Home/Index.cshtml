@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Все абоненты";
+}
+
+<h2>Телефонная книга</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>Текущий пользователь: @User.Identity.Name</p>    
+
+    <form method="post" asp-controller="Account" asp-action="Logout">
+        <input type="submit" value="Выход" class="btn btn-sm btn-primary" />        
+    </form>
+
+    @if (User.IsInRole("admin"))
+    {
+        <a asp-controller="Users" asp-action="Index">Управление пользователями</a><br />
+    }
+
+    @model IEnumerable<module_21.Models.Subscriber>
+<a asp-action="CreateSubscriber">Добавить абонента</a>
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Номер телефона</td>
+            <td>Адрес</td>
+            <td>Описание</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Patronymic</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Address</td>
+                <td>@item.Description</td>
+                <td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a asp-action="EditSubscriber" asp-controller="Home" asp-route-id="@item.Id">Изменить</a>
+                        <a asp-action = "DeleteSubscriber" asp-controller = "Home" asp-route-id = "@item.Id">Удалить</a>                        
+                    }
+                    
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login">Вход</a>
+    <a asp-controller="Account" asp-action="Register">Регистрация</a>
+    
+    <table class="table">
+        <tr>
+            <td>ID</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Отчество</td>
+            <td>Номер телефона</td>
+            <td>Адрес</td>
+            <td>Описание</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Patronymic</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Address</td>
+                <td>@item.Description</td>                
+            </tr>
+        }
+    </table>
+}
